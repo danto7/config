@@ -3,7 +3,7 @@ ZSH_THEME="avit-custom"
 
 DISABLE_AUTO_TITLE="true"
 
-plugins=(git ruby)
+plugins=(git ruby docker docker-compose)
 
 source $ZSH/oh-my-zsh.sh
 
