@@ -11,6 +11,7 @@ alias zshconfig="code ~/.zshrc"
 alias ohmyzsh="code ~/.oh-my-zsh"
 
 # Git
+<<<<<<< HEAD
 gt="git status"
 gu="git pull --rebase --autostash"
 gp="git push"
@@ -22,6 +23,19 @@ ga="git add"
 d="docker"
 dps="docker ps"
 dpsa="docker ps -a"
+=======
+alias gt="git status"
+alias gu="git pull --rebase --autostash"
+alias gp="git push"
+alias gc="git commit"
+alias gca="git commit --amend"
+alias ga="git add"
+
+# Docker
+alias d="docker"
+alias dps="docker ps"
+alias dpsa="docker ps -a"
+>>>>>>> update zshrc
 
 # Ruby
 if type rbenv >/dev/null; then
