@@ -1,3 +1,3 @@
 # shell-config
-## OH-MY-ZSH
-```sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"```
+## Automatic installation script
+```sh -c "$(curl -fsSL https://raw.githubusercontent.com/danto9/shell-config/master/install.sh)"```
