@@ -10,7 +10,20 @@ source $ZSH/oh-my-zsh.sh
 alias zshconfig="code ~/.zshrc"
 alias ohmyzsh="code ~/.oh-my-zsh"
 
-#Ruby
+# Git
+gt="git status"
+gu="git pull --rebase --autostash"
+gp="git push"
+gc="git commit"
+gca="git commit --amend"
+ga="git add"
+
+# Docker
+d="docker"
+dps="docker ps"
+dpsa="docker ps -a"
+
+# Ruby
 if type rbenv >/dev/null; then
   eval "$(rbenv init -)"
 fi
@@ -18,9 +31,9 @@ alias rint="bin/rails spec:integration"
 alias runit="bin/rails spec"
 alias rs="bin/rails s"
 
-#PATH
+# PATH
 export PATH="/usr/local/opt/qt/bin:$PATH"
 export PATH=$PATH:/usr/local/opt/go/libexec/bin
 
-#System Shortcuts
+# System Shortcuts
 alias ll="ls -la"
