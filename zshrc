@@ -34,6 +34,7 @@ alias rs="bin/rails s"
 # PATH
 export PATH="/usr/local/opt/qt/bin:$PATH"
 export PATH=$PATH:/usr/local/opt/go/libexec/bin
+export PATH=$PATH:$HOME/.cargo/bin
 
 # System Shortcuts
 alias ll="ls -la"
