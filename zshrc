@@ -22,6 +22,7 @@ alias ga="git add"
 alias d="docker"
 alias dps="docker ps"
 alias dpsa="docker ps -a"
+alias dc="docker-compose"
 
 # Ruby
 if type rbenv >/dev/null; then
