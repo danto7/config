@@ -2,5 +2,8 @@
     "editor.tabSize": 2,
     "editor.renderWhitespace": "boundary",
     "editor.wordWrap": "on",
-    "workbench.startupEditor": "none"
+    "workbench.startupEditor": "none",
+    "workbench.statusBar.visible": false,
+    "window.menuBarVisibility": "toggle",
+    "remote.onstartup": true
 }
