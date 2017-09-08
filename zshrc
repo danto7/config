@@ -32,6 +32,9 @@ alias rint="bin/rails spec:integration"
 alias runit="bin/rails spec"
 alias rs="bin/rails s"
 
+# Remote VSCode
+alias code="jmate"
+
 # PATH
 export PATH="/usr/local/opt/qt/bin:$PATH"
 export PATH=$PATH:/usr/local/opt/go/libexec/bin
