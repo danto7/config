@@ -13,4 +13,5 @@ ln -s $HOME/.danto-config/zshrc $HOME/.zshrc
 ln -s $HOME/.danto-config/avit-custom.zsh-theme $HOME/.oh-my-zsh/themes/avit-custom.zsh-theme
 ln -s $HOME/.danto-config/i3/ $HOME/.config/i3
 ln -s $HOME/.danto-config/code/ $HOME/.config/Code/User
+sudo ln -s $HOME/.danto-config/scripts/i3exit /usr/local/bin/i3exit
 ```
