@@ -35,7 +35,9 @@ alias runit="bin/rails spec"
 alias rs="bin/rails s"
 
 # Remote VSCode
-alias code="jmate"
+if [ -x jmate ]; then
+  alias code="jmate"
+fi
 
 # PATH
 export PATH="/usr/local/opt/qt/bin:/usr/local/opt/go/libexec/bin:$HOME/.cargo/bin:$DANTO_CONFIG/scripts:$PATH"
