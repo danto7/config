@@ -1,3 +1,4 @@
+# ohmyzsh config
 export ZSH=$HOME/.oh-my-zsh
 ZSH_THEME="avit-custom"
 
@@ -7,9 +8,10 @@ plugins=(git ruby docker docker-compose)
 
 source $ZSH/oh-my-zsh.sh
 
-alias zshconfig="code ~/.zshrc"
-alias ohmyzsh="code ~/.oh-my-zsh"
+# Other Variables
+DANTO_CONFIG="$HOME/.danto-config"
 
+# Shortcuts
 # Git
 alias gt="git status"
 alias gu="git pull --rebase --autostash"
@@ -36,9 +38,10 @@ alias rs="bin/rails s"
 alias code="jmate"
 
 # PATH
-export PATH="/usr/local/opt/qt/bin:$PATH"
-export PATH=$PATH:/usr/local/opt/go/libexec/bin
-export PATH=$PATH:$HOME/.cargo/bin
+export PATH="/usr/local/opt/qt/bin:/usr/local/opt/go/libexec/bin:$HOME/.cargo/bin:$DANTO_CONFIG/scripts:$PATH"
 
 # System Shortcuts
 alias ll="ls -la"
+
+alias zshconfig="code ~/.zshrc"
+alias ohmyzsh="code ~/.oh-my-zsh"
