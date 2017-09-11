@@ -35,7 +35,7 @@ alias runit="bin/rails spec"
 alias rs="bin/rails s"
 
 # Remote VSCode
-if [ -x jmate ]; then
+if [ -x /usr/bin/jmate ]; then
   alias code="jmate"
 fi
 
