@@ -15,3 +15,5 @@ ln -s $HOME/.danto-config/i3/ $HOME/.config/i3
 ln -s $HOME/.danto-config/code/ $HOME/.config/Code/User
 sudo ln -s $HOME/.danto-config/scripts/i3exit /usr/local/bin/i3exit
 ```
+## TODO
+* Polybar https://github.com/jaagr/polybar#getting-started
