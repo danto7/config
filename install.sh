@@ -1,14 +1,15 @@
+#!/bin/bash
 main(){
   # download custom configs
-  git clone --depth 1 https://github.com/danto9/shell-config.git $HOME/.danto-config
+  git clone https://github.com/danto9/shell-config.git "$HOME/.config"
 
   # installing oh-my-zsh
-  git clone --depth 1 https://github.com/robbyrussell/oh-my-zsh.git $HOME/.oh-my-zsh
+  git clone --depth 1 https://github.com/robbyrussell/oh-my-zsh.git "$HOME/.oh-my-zsh"
 
   rm $HOME/.zshrc
-  echo "source \$HOME/.danto-config/zshrc" > $HOME/.zshrc
+  echo "source \$HOME/.danto-config/zshrc" > "$HOME/.zshrc"
 
-  ln -s $HOME/.danto-config/avit-custom.zsh-theme $HOME/.oh-my-zsh/themes/avit-custom.zsh-theme
+  ln -s $HOME/.danto-config/avit-custom.zsh-theme "$HOME/.oh-my-zsh/themes/avit-custom.zsh-theme"
 
   echo "Installation comlete."
   echo "Now you can change your default shell with chsh e.g."
@@ -33,13 +34,4 @@ check_dependencies(){
 }
 
 check_dependencies
-echo "Your current .zshrc config gets overwritten."
-read -p "Do you want to continue? (y/N)" -n 1 -r
-echo
-
-if [[ $REPLY =~ ^[Yy]$ ]]; then
-  main
-else
-  echo "Aborting ..."
-  exit 1
-fi
+main
