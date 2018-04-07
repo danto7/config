@@ -1,6 +1,6 @@
 # ohmyzsh config
 export ZSH=$HOME/.oh-my-zsh
-ZSH_THEME="avit-custom"
+ZSH_THEME="avit"
 
 DISABLE_AUTO_TITLE="true"
 
@@ -47,3 +47,9 @@ alias ll="ls -la"
 
 alias zshconfig="code ~/.zshrc"
 alias ohmyzsh="code ~/.oh-my-zsh"
+
+# start gnome-keyring
+if [ -n "$DESKTOP_SESSION" ];then
+    eval $(gnome-keyring-daemon --start)
+    export SSH_AUTH_SOCK
+fi
