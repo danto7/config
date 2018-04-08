@@ -34,19 +34,27 @@ alias rint="bin/rails spec:integration"
 alias runit="bin/rails spec"
 alias rs="bin/rails s"
 
+# set editor
+if [ -n "$DESKTOP_SESSION" ] && hash code 2>/dev/null;then
+  export EDITOR="code"
+else
+  export EDITOR="vim"
+fi
+
 # Remote VSCode
 if [ -x /usr/bin/jmate ]; then
   alias code="jmate"
 fi
 
 # PATH
-export PATH="/usr/local/opt/qt/bin:/usr/local/opt/go/libexec/bin:$HOME/.cargo/bin:$DANTO_CONFIG/scripts:$PATH"
+export PATH="/usr/local/opt/qt/bin:/usr/local/go/bin:$HOME/.cargo/bin:$DANTO_CONFIG/scripts:$PATH:$HOME/go/bin"
 
 # System Shortcuts
 alias ll="ls -la"
+alias ip="ip -c"
 
-alias zshconfig="code ~/.zshrc"
-alias ohmyzsh="code ~/.oh-my-zsh"
+alias zshconfig="$EDITOR ~/.zshrc"
+alias ohmyzsh="$EDITOR ~/.oh-my-zsh"
 
 # start gnome-keyring
 if [ -n "$DESKTOP_SESSION" ];then
