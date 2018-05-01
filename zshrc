@@ -1,6 +1,8 @@
 # ohmyzsh config
 export ZSH=$HOME/.oh-my-zsh
 ZSH_THEME="avit"
+LC_CTYPE=en_US.UTF-8
+LC_ALL=en_US.UTF-8
 
 DISABLE_AUTO_TITLE="true"
 
