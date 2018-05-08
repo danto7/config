@@ -11,7 +11,7 @@ plugins=(git ruby docker docker-compose)
 source $ZSH/oh-my-zsh.sh
 
 # Other Variables
-DANTO_CONFIG="$HOME/.danto-config"
+CONFIG_FOLDER="$HOME/.myconfig"
 
 # Shortcuts
 # Git
@@ -29,6 +29,7 @@ alias dpsa="docker ps -a"
 alias dc="docker-compose"
 
 # Ruby
+export PATH="$HOME/.rbenv/bin:$PATH"
 if type rbenv >/dev/null; then
   eval "$(rbenv init -)"
 fi
@@ -57,6 +58,11 @@ alias ip="ip -c"
 
 alias zshconfig="$EDITOR ~/.zshrc"
 alias ohmyzsh="$EDITOR ~/.oh-my-zsh"
+
+if [ -d "~/.config/nvm" ]; then
+  export NVM_DIR="~/.config/nvm"
+  source "~/.config/nvm/nvm.sh"
+fi
 
 # start gnome-keyring
 if [ -n "$DESKTOP_SESSION" ];then
