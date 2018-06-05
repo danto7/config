@@ -179,5 +179,7 @@ mode "$mode_system" {
 }
 bindsym $mod+Pause mode "$mode_system"
 
+exec "setxkbmap -layout de"
+
 # Launch polybar
 exec_always --no-startup-id ~/.myconfig/scripts/launch_polybar.sh
