@@ -179,6 +179,18 @@ mode "$mode_system" {
 }
 bindsym $mod+Pause mode "$mode_system"
 
+# bind some keys
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5%
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5%
+
+bindsym XF86MonBrightnessUp exec --no-startup-id sudo brightnessctl set +5%
+bindsym XF86MonBrightnessDown exec --no-startup-id sudo brightnessctl set 5%-
+
+# preconfigure some windows
+for_window [class="Nm-connection-editor"] floating enable
+for_window [class="Blueman-services"] floating enable
+for_window [class="Blueman-manager"] floating enable
+
 exec "setxkbmap -layout de"
 
 bar {
