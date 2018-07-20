@@ -1,0 +1,16 @@
+#!/usr/bin/env ruby
+
+volume = `pamixer --get-volume`.tr(" \n", "").to_i
+isMuted = `pamixer --get-mute`.include? "true"
+
+if volume == 0 || isMuted
+  icon = "🔇"
+elsif volume < 30
+  icon = "🔈"
+elsif volume < 80
+  icon = "🔉"
+else
+  icon = "🔊"
+end
+
+puts "#{icon} #{volume}%"
