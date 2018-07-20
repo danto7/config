@@ -1,0 +1,31 @@
+#!/usr/bin/env ruby
+
+# parses the nmcli connections
+interfaces = `nmcli -t connection show --active`
+.split("\n")
+.map do |interface_string|
+  values = interface_string.split(":")
+  {
+    name: values[0],
+    uuid: values[1],
+    type: values[2],
+    device: values[3]
+  }
+end
+
+# filter relevant connections
+interfaces.select! { |iface| ["802-11-wireless", "ethernet"].include? iface[:type] }
+
+# get ip address from connextion
+interfaces.map! do |iface|
+  info = `nmcli -t --fields connection,IP4 connection show "#{iface[:uuid]}"`
+  iface[:ip] = /^IP4\.ADDRESS\[1\]:(.+)\/\d{1,2}$/.match(info)[1]
+  iface
+end
+
+# create output
+interfaces.map! do |iface|
+  "<span color='lightgreen'>#{iface[:name]}</span> #{iface[:ip]}"
+end
+
+puts "🌎 #{interfaces.length > 0 ? interfaces.join(" | ") : "<span color='red'>not connected</span>"}"

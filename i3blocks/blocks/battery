@@ -1,0 +1,12 @@
+#!/usr/bin/env ruby
+
+battery_path = "/sys/class/power_supply/BAT0"
+
+isCharging = File.read("#{battery_path}/status").include? "Charging"
+capacity = File.read("#{battery_path}/capacity").tr " \n", ""
+
+if isCharging
+  puts "⚡ #{capacity}%"
+else
+  puts "🔋 #{capacity}%"
+end
