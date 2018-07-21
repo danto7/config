@@ -182,11 +182,7 @@ bindsym $mod+Pause mode "$mode_system"
 # bind some keys
 bindsym XF86AudioLowerVolume exec --no-startup-id pamixer -d 5 && pkill -RTMIN+10 i3blocks
 bindsym XF86AudioRaiseVolume exec --no-startup-id pamixer -i 5 && pkill -RTMIN+10 i3blocks
-<<<<<<< HEAD
-bindsym XF86AudioRaiseVolume exec --no-startup-id pamixer -t && pkill -RTMIN+10 i3blocks
-=======
 bindsym XF86AudioMute exec --no-startup-id pamixer -t && pkill -RTMIN+10 i3blocks
->>>>>>> add audio mute key
 
 bindsym XF86MonBrightnessUp exec --no-startup-id sudo brightnessctl set +5%
 bindsym XF86MonBrightnessDown exec --no-startup-id sudo brightnessctl set 5%-
