@@ -1,5 +1,5 @@
 # Global properties
-command=$HOME/.myconfig/i3blocks/blocks/$BLOCK_NAME
+command=$HOME/.myconfig/i3blocks/blocks/$BLOCK_NAME $BLOCK_BUTTON
 separator_block_width=15
 markup=none
 

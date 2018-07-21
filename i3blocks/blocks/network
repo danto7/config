@@ -1,5 +1,9 @@
 #!/usr/bin/env ruby
 
+if ARGV[0] == "1"
+  system("nm-connection-editor")
+end
+
 # parses the nmcli connections
 interfaces = `nmcli -t connection show --active`
 .split("\n")
