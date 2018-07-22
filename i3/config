@@ -208,4 +208,5 @@ exec "setxkbmap -layout de"
 
 bar {
   status_command i3blocks
+  position top
 }
