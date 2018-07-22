@@ -162,6 +162,17 @@ mode "resize" {
 }
 bindsym $mod+r mode "resize"
 
+# make it colorfull
+# class                 border  bground text    indicator child_border
+client.focused          #ED8712 #ED8712 #FFFFFF #E53714   #ED8712
+client.focused_inactive #333333 #5F676A #FFFFFF #484E50   #5F676A
+client.unfocused        #1D1D1D #1D1D1D #848484 #1D1D1D   #1d1d1d
+client.urgent           #2F343A #900000 #FFFFFF #900000   #900000
+client.placeholder      #000000 #0C0C0C #FFFFFF #000000   #0C0C0C
+
+client.background       #FFFFFF
+
+default_border pixel 2
 
 # Shutdown Mode
 set $mode_system System (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (Shift+s) shutdown
