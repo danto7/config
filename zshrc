@@ -64,7 +64,7 @@ fi
 
 # set editor
 if [ -n "$DESKTOP_SESSION" ] && hash code 2>/dev/null;then
-  export EDITOR="code"
+  export EDITOR="code -n -w"
 else
   export EDITOR="vim"
 fi
