@@ -31,36 +31,13 @@ alias dpsa="docker ps -a"
 alias dc="docker-compose"
 
 # Ruby
-export PATH="$HOME/.rbenv/bin:$PATH"
 if type rbenv >/dev/null; then
+  export PATH="$HOME/.rbenv/bin:$PATH"
   eval "$(rbenv init -)"
 fi
 alias rint="bin/rails spec:integration"
 alias runit="bin/rails spec"
 alias rs="bin/rails s"
-
-# GOPATH helper
-cd () {
-  builtin cd "$@"
-  cdir=$PWD
-  export GOPATH="$HOME/go"
-  i=0
-  while [ "$cdir" != "/" ]; do
-    if [ -e "$cdir/.gopath" ]; then
-      export GOPATH=$cdir
-      if [ $i -eq 0 ]; then; echo "GOPATH=$GOPATH"; fi
-      break
-    fi
-    cdir=$(dirname "$cdir")
-    i=$((i+1))
-  done
-}
-
-# NVM
-if [ -d "~/.config/nvm" ]; then
-  export NVM_DIR="~/.config/nvm"
-  source "~/.config/nvm/nvm.sh"
-fi
 
 # set editor
 if [ -n "$DESKTOP_SESSION" ] && hash code 2>/dev/null;then
