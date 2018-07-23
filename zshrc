@@ -49,9 +49,6 @@ fi
 # FZF default grep command
 export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*"'
 
-# PATH
-export PATH="/usr/local/opt/qt/bin:/usr/local/go/bin:$HOME/.cargo/bin:$CONFIG_FOLDER/scripts:$PATH:$HOME/go/bin"
-
 # System Shortcuts
 alias ll="ls -la"
 alias ip="ip -c"
