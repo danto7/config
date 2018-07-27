@@ -18,7 +18,7 @@ interfaces = `nmcli -t connection show --active`
 end
 
 # filter relevant connections
-interfaces.select! { |iface| ["802-11-wireless", "ethernet", "vpn"].include? iface[:type] }
+interfaces.select! { |iface| ["802-11-wireless", "ethernet", "802-3-ethernet", "vpn"].include? iface[:type] }
 
 # get ip address from connextion
 interfaces.map! do |iface|
