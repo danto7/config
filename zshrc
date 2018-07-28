@@ -6,7 +6,7 @@ LC_ALL=en_US.UTF-8
 
 DISABLE_AUTO_TITLE="true"
 
-plugins=(git ruby docker docker-compose)
+plugins=(git ruby docker docker-compose autojump)
 
 source $ZSH/oh-my-zsh.sh
 
