@@ -1,5 +1,9 @@
 #!/usr/bin/env ruby
 
+if ARGV[0] == "1"
+  system("pavucontrol")
+end
+
 volume = `pamixer --get-volume`.tr(" \n", "").to_i
 isMuted = `pamixer --get-mute`.include? "true"
 
