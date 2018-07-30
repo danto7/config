@@ -1,0 +1,5 @@
+#!/usr/bin/env ruby
+
+brightness = `brightnessctl -m`.split(",")[3]
+
+puts "💡 #{brightness}"
