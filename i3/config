@@ -50,10 +50,10 @@ bindsym $mod+d exec rofi -show run -matching fuzzy
 # bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 
 # change focus
-bindsym $mod+$left focus left
-bindsym $mod+$down focus down
-bindsym $mod+$up focus up
-bindsym $mod+$right focus right
+#bindsym $mod+$left focus left
+#bindsym $mod+$down focus down
+#bindsym $mod+$up focus up
+#bindsym $mod+$right focus right
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Left focus left
@@ -199,6 +199,9 @@ bindsym XF86AudioMute exec --no-startup-id pamixer -t && pkill -RTMIN+10 i3block
 
 bindsym XF86MonBrightnessUp exec --no-startup-id sudo brightnessctl set +5%
 bindsym XF86MonBrightnessDown exec --no-startup-id sudo brightnessctl set 5%-
+
+#screen lock
+bindsym $mod+l exec --no-startup-id ~/.myconfig/scripts/screenlock
 
 # preconfigure some windows
 for_window [class="Nm-connection-editor"] floating enable

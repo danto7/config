@@ -1,0 +1,7 @@
+#!/bin/bash
+
+image="/tmp/lockscreen.png"
+
+import -window root $image
+convert -scale 50% -blur 0x5 -fill "rgba(255,255,255,0.1)" -draw "rectangle 0,0 10%,10%" $image -scale 200% $image
+i3lock -i $image
