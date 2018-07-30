@@ -1,0 +1,16 @@
+#!/usr/bin/env ruby
+
+options = {
+  "lock": "env ruby ~/.myconfig/scripts/screenlock",
+  "suspend": "systemctl suspend",
+  "poweroff": "systemctl poweroff",
+  "reboot": "systemctl reboot"
+}
+
+selected = ARGV[0]
+if options.keys.map(&:to_s).include? selected
+  Process.daemon()
+  exec options[selected.to_sym]
+else
+  puts options.keys.join "\n"
+end

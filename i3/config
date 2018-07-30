@@ -190,7 +190,6 @@ mode "$mode_system" {
     bindsym Return mode "default"
     bindsym Escape mode "default"
 }
-bindsym $mod+Pause mode "$mode_system"
 
 # bind some keys
 bindsym XF86AudioLowerVolume exec --no-startup-id pamixer -d 5 && pkill -RTMIN+10 i3blocks
@@ -202,6 +201,7 @@ bindsym XF86MonBrightnessDown exec --no-startup-id sudo brightnessctl set 5%- &&
 
 #screen lock
 bindsym $mod+l exec --no-startup-id ~/.myconfig/scripts/screenlock
+bindsym $mod+Pause exec --no-startup-id rofi -show power -modi power:~/.myconfig/scripts/turnoff
 
 # preconfigure some windows
 for_window [class="Nm-connection-editor"] floating enable

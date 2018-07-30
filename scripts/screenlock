@@ -10,7 +10,7 @@ height = size[2].to_i
 center_x = width/2
 center_y = height/2
 
-`convert \
+puts `convert \
 -scale 50% \
 -blur 0x5 \
 -fill "rgba(255,255,255,0.05)" -draw "rectangle 0,0 10000,10000" \
@@ -18,6 +18,4 @@ center_y = height/2
 -append \
 #{image} #{image}`
 
-puts "circle 50,50 50,50"
-
-system "i3lock -i #{image}"
+exec "i3lock -i #{image}"
