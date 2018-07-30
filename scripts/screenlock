@@ -1,7 +1,23 @@
-#!/bin/bash
+#!/usr/bin/env ruby
 
-image="/tmp/lockscreen.png"
+image = "/tmp/lockscreen.png"
 
-import -window root $image
-convert -scale 50% -blur 0x5 -fill "rgba(255,255,255,0.1)" -draw "rectangle 0,0 10%,10%" $image -scale 200% $image
-i3lock -i $image
+`import -window root #{image}`
+
+size = `identify #{image}`.match /PNG (\d+)x(\d+) /
+width = size[1].to_i
+height = size[2].to_i
+center_x = width/2
+center_y = height/2
+
+`convert \
+-scale 50% \
+-blur 0x5 \
+-fill "rgba(255,255,255,0.05)" -draw "rectangle 0,0 10000,10000" \
+-scale 200% \
+-append \
+#{image} #{image}`
+
+puts "circle 50,50 50,50"
+
+system "i3lock -i #{image}"
