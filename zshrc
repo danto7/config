@@ -31,7 +31,7 @@ alias dpsa="docker ps -a"
 alias dc="docker-compose"
 
 # Ruby
-if type rbenv >/dev/null; then
+if ls ~/.rbenv >/dev/null; then
   export PATH="$HOME/.rbenv/bin:$PATH"
   eval "$(rbenv init -)"
 fi
