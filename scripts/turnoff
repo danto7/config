@@ -3,6 +3,7 @@
 options = {
   "lock": "env ruby ~/.myconfig/scripts/screenlock",
   "suspend": "systemctl suspend",
+  "logoff": "i3-msg exit",
   "poweroff": "systemctl poweroff",
   "reboot": "systemctl reboot"
 }
