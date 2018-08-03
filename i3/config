@@ -199,9 +199,10 @@ bindsym XF86AudioMute exec --no-startup-id pamixer -t && pkill -RTMIN+10 i3block
 bindsym XF86MonBrightnessUp exec --no-startup-id sudo brightnessctl set +5% && pkill -RTMIN+10 i3blocks
 bindsym XF86MonBrightnessDown exec --no-startup-id sudo brightnessctl set 5%- && pkill -RTMIN+10 i3blocks
 
-#screen lock
+# scripts
 bindsym $mod+l exec --no-startup-id ~/.myconfig/scripts/screenlock
 bindsym $mod+Pause exec --no-startup-id rofi -show power -modi power:~/.myconfig/scripts/turnoff
+bindsym $mod+p exec --no-startup-id rofi -show "Monitor mode" -modi "Monitor mode":~/.myconfig/scripts/screen_setup
 
 # preconfigure some windows
 for_window [class="Nm-connection-editor"] floating enable
@@ -209,8 +210,8 @@ for_window [class="Blueman-services"] floating enable
 for_window [class="Blueman-manager"] floating enable
 for_window [class="Pavucontrol"] floating enable
 
-workspace $ws1 output DP-2
-workspace $ws10 output DP-5
+workspace $ws1 output primary
+workspace $ws10 output right
 
 exec "setxkbmap -layout de"
 

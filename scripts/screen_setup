@@ -1,0 +1,28 @@
+#!/usr/bin/env ruby
+
+def i3_move_workspace_to_output(workspace, output)
+  `xrandr --output #{output} --primary`
+  `i3-msg workspace #{workspace}`
+  `i3-msg move workspace to output primary`
+end
+
+options = {
+  "Notebook Mode": Proc.new { `xrandr --output eDP1 --primary --output DP1 --off --output DP1-2 --off` },
+  "Workstation Mode": Proc.new {
+    `xrandr --output DP1-2 --primary --auto --right-of eDP1`
+    for i in 1..9
+      i3_move_workspace_to_output i, "DP1-2"
+    end
+    i3_move_workspace_to_output 10, "eDP1"
+    `i3-msg workspace 1`
+  },
+  "Mirror Mode": Proc.new { `xrandr --output DP1-2 --off --output DP1 --auto --same-as eDP1` },
+  "Extension Mode": Proc.new { `xrandr --output DP1-2 --off --output DP1 --auto --right-of eDP1` }
+}
+
+selected = ARGV[0]
+if options.keys.map(&:to_s).include? selected
+  options[selected.to_sym].call
+else
+  puts options.keys.join "\n"
+end
