@@ -214,6 +214,7 @@ workspace $ws1 output primary
 workspace $ws10 output right
 
 exec "setxkbmap -layout de"
+exec "compton -b"
 
 bar {
   status_command i3blocks
