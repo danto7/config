@@ -20,16 +20,27 @@ end
 # filter relevant connections
 interfaces.select! { |iface| ["802-11-wireless", "ethernet", "802-3-ethernet", "vpn"].include? iface[:type] }
 
+# get connection status
+interfaces.map! do |iface|
+  device = `nmcli -t device status`
+  .split("\n")
+  .map { |line| line.split(":") }
+  .select { |device| device[0] == iface[:device] }[0]
+  iface[:status] = device[2]
+  iface
+end	
+
 # get ip address from connextion
 interfaces.map! do |iface|
   info = `nmcli -t --fields connection,IP4 connection show "#{iface[:uuid]}"`
-  iface[:ip] = /^IP4\.ADDRESS\[1\]:(.+)\/\d{1,2}$/.match(info)[1]
+  ip = /^IP4\.ADDRESS\[1\]:(.+)\/\d{1,2}$/.match(info)
+  iface[:ip] = ip[1] unless ip.nil?
   iface
 end
 
 # create output
 interfaces.map! do |iface|
-  "<span color='lightgreen'>#{iface[:name]}</span> #{iface[:ip]}"
+  "<span color='lightgreen'>#{iface[:name]}</span> #{iface[:status].include?("connected") ? iface[:ip] : iface[:status] }"
 end
 
 puts "🌎 #{interfaces.length > 0 ? interfaces.join(" | ") : "<span color='red'>not connected</span>"}"

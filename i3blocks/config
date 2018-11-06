@@ -4,7 +4,8 @@ separator_block_width=15
 markup=none
 
 [network]
-interval=10
+interval=once
+signal=10
 markup=pango
 
 [volume]
