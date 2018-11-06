@@ -210,11 +210,11 @@ for_window [class="Blueman-services"] floating enable
 for_window [class="Blueman-manager"] floating enable
 for_window [class="Pavucontrol"] floating enable
 
-workspace $ws1 output primary
-workspace $ws10 output right
-
 exec "setxkbmap -layout de"
 exec "compton -b"
+exec "~/.myconfig/scripts/start_gnome_keyring"
+exec "thunar --daemon"
+exec_always "nitrogen --set-zoom-fill --random ~/wallpaper"
 
 bar {
   status_command i3blocks
