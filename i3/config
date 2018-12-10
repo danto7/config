@@ -209,12 +209,15 @@ for_window [class="Nm-connection-editor"] floating enable
 for_window [class="Blueman-services"] floating enable
 for_window [class="Blueman-manager"] floating enable
 for_window [class="Pavucontrol"] floating enable
+for_window [class="keepassxc"] move container to workspace $ws10
 
 exec "setxkbmap -layout de"
 exec "compton -b"
 exec "~/.myconfig/scripts/start_gnome_keyring"
 exec "thunar --daemon"
 exec_always "nitrogen --set-zoom-fill --random ~/wallpaper"
+exec "nm-applet"
+exec "keepassxc"
 
 bar {
   status_command i3blocks
