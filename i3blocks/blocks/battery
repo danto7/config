@@ -9,4 +9,5 @@ if isCharging
   puts "⚡ #{capacity}%"
 else
   puts "🔋 #{capacity}%"
+  exit 33 if capacity.to_i < 10
 end
