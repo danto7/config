@@ -52,6 +52,7 @@ export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.g
 # System Shortcuts
 alias ll="ls -la"
 alias ip="ip -c"
+alias userctl="systemctl --user"
 
 alias zshconfig="$EDITOR ~/.zshrc"
 alias ohmyzsh="$EDITOR ~/.oh-my-zsh"
