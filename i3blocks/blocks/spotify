@@ -1,0 +1,57 @@
+#!/usr/bin/env ruby
+require("psych")
+require("json")
+require("curb")
+require("time")
+
+def parse_config
+  $conf = {
+    access_token: "",
+    expires: "",
+    bearer: "",
+  }
+  begin
+    Psych.load_file(CONF_FILE).each do |key, value|
+      $conf[key] = value
+    end
+  rescue Errno::ENOENT
+    puts "Cant't read Yaml config."
+    #exit 1
+  end
+end
+
+def get_new_token
+  http = Curl.post("https://accounts.spotify.com/api/token", {grant_type: "client_credentials"}) do |http|
+    http.headers["Authorization"] = "Basic #{$conf[:bearer]}"
+  end
+
+  res = JSON.parse(http.body_str)
+  $conf[:access_token] = res["access_token"]
+  $conf[:expires] = (Time.now + res["expires_in"].to_i).to_s
+end
+
+def expired?
+  return true if $conf[:expires].empty?
+  Time.now >= Time.parse($conf[:expires])
+end
+
+def read_song_id
+  File.read("/tmp/spotify").chomp
+end
+
+def get_song_info
+  http = Curl.get("https://api.spotify.com/v1/tracks/#{read_song_id}") do |http|
+    http.headers["Authorization"] = "Bearer #{$conf[:access_token]}"
+  end
+
+  res = JSON.parse(http.body_str)
+end
+
+CONF_FILE = "#{Dir.home}/.spotify_creds"
+parse_config
+get_new_token if expired?
+song = get_song_info
+
+puts "🎶 #{song["name"]} - #{song["artists"].first["name"]}"
+
+File.write(CONF_FILE, Psych.dump($conf))
