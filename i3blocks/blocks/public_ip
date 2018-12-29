@@ -1,10 +1,14 @@
 #!/usr/bin/env ruby
 require "curb"
 
-begin
-  http = Curl.get "https://ipecho.net/plain"
-rescue => exception
-  puts ""
+if ARGV[0] == "1"
+  begin
+    http = Curl.get "https://ipecho.net/plain"
+  rescue => exception
+    puts ""
+  else
+    puts "🌍 #{http.body_str}"
+  end
 else
-  puts "🌍 #{http.body_str}"
+  puts "-> 🌍 <-"
 end
