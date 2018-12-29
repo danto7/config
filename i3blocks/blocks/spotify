@@ -4,6 +4,8 @@ require("json")
 require("curb")
 require("time")
 
+EVENT_FILE = "/tmp/spotify"
+
 def parse_config
   $conf = {
     access_token: "",
@@ -36,7 +38,11 @@ def expired?
 end
 
 def read_song_id
-  File.read("/tmp/spotify").chomp
+  File.read(EVENT_FILE).chomp.split(":")[1]
+end
+
+def read_event
+  File.read(EVENT_FILE).chomp.split(":")[0]
 end
 
 def get_song_info
@@ -52,6 +58,6 @@ parse_config
 get_new_token if expired?
 song = get_song_info
 
-puts "🎶 #{song["name"]} - #{song["artists"].first["name"]}"
+puts "#{read_event == "stop" ? "🤫" : "🎶"} #{song["name"]} - #{song["artists"].first["name"]}"
 
 File.write(CONF_FILE, Psych.dump($conf))

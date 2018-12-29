@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
-echo "$TRACK_ID" > /tmp/spotify
+echo "$PLAYER_EVENT:$TRACK_ID" > /tmp/spotify
 pkill -RTMIN+10 i3blocks
