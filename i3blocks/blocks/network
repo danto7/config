@@ -6,14 +6,14 @@ end
 
 # parses the nmcli connections
 interfaces = `nmcli -t connection show --active`
-.split("\n")
-.map do |interface_string|
+  .split("\n")
+  .map do |interface_string|
   values = interface_string.split(":")
   {
     name: values[0],
     uuid: values[1],
     type: values[2],
-    device: values[3]
+    device: values[3],
   }
 end
 
@@ -23,12 +23,12 @@ interfaces.select! { |iface| ["802-11-wireless", "ethernet", "802-3-ethernet", "
 # get connection status
 interfaces.map! do |iface|
   device = `nmcli -t device status`
-  .split("\n")
-  .map { |line| line.split(":") }
-  .select { |device| device[0] == iface[:device] }[0]
+    .split("\n")
+    .map { |line| line.split(":") }
+    .select { |device| device[0] == iface[:device] }[0]
   iface[:status] = device[2]
   iface
-end	
+end
 
 # get ip address from connextion
 interfaces.map! do |iface|
@@ -40,7 +40,7 @@ end
 
 # create output
 interfaces.map! do |iface|
-  "<span color='lightgreen'>#{iface[:name]}</span> #{iface[:status].include?("connected") ? iface[:ip] : iface[:status] }"
+  "<span color='lightgreen'>#{iface[:name]}</span> #{iface[:status].include?("connected") ? iface[:ip] : iface[:status]}"
 end
 
-puts "🌎 #{interfaces.length > 0 ? interfaces.join(" | ") : "<span color='red'>not connected</span>"}"
+puts "🖧 #{interfaces.length > 0 ? interfaces.join(" | ") : "<span color='red'>not connected</span>"}"

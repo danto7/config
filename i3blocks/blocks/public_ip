@@ -1,0 +1,5 @@
+#!/usr/bin/env ruby
+require "curb"
+
+http = Curl.get "https://ipecho.net/plain"
+puts "🌍 #{http.body_str}"

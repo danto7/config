@@ -7,6 +7,10 @@ markup=none
 interval=once
 signal=10
 
+[public_ip]
+interval=once
+signal=10
+
 [network]
 interval=once
 signal=10
