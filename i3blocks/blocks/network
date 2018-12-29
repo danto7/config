@@ -43,4 +43,4 @@ interfaces.map! do |iface|
   "<span color='lightgreen'>#{iface[:name]}</span> #{iface[:status].include?("connected") ? iface[:ip] : iface[:status]}"
 end
 
-puts "🖧 #{interfaces.length > 0 ? interfaces.join(" | ") : "<span color='red'>not connected</span>"}"
+puts "🖧  #{interfaces.length > 0 ? interfaces.join(" | ") : "<span color='red'>not connected</span>"}"
