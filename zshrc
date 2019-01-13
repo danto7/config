@@ -1,17 +1,11 @@
-# ohmyzsh config
-export ZSH=$HOME/.oh-my-zsh
-ZSH_THEME="avit"
-LC_CTYPE=en_US.UTF-8
-LC_ALL=en_US.UTF-8
-
-DISABLE_AUTO_TITLE="true"
-
-plugins=(git ruby docker docker-compose autojump)
-
-source $ZSH/oh-my-zsh.sh
-
-# Other Variables
 CONFIG_FOLDER="$HOME/.myconfig"
+
+fpath=( "$CONFIG_FOLDER/fpath" $fpath )
+
+PURE_PROMPT_SYMBOL="🍕"
+
+autoload -U promptinit; promptinit
+prompt pure
 
 # Shortcuts
 alias sctl="sudo systemctl"
