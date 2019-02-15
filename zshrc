@@ -7,6 +7,12 @@ PURE_PROMPT_SYMBOL="🍕"
 autoload -U promptinit; promptinit
 prompt pure
 
+# Keybindings
+bindkey "[1;5D" backward-word
+bindkey "[1;5C" forward-word
+bindkey "OB" down-line-or-search
+bindkey "OA" up-line-or-search
+
 # Git
 alias gt="git status"
 alias gu="git pull --rebase --autostash"
