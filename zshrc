@@ -61,10 +61,8 @@ alias ll="ls -lha"
 alias ip="ip -c"
 alias userctl="systemctl --user"
 alias sctl="sudo systemctl"
-alias vzsh="vim ~/.zshrc"
 
-alias zshconfig="$EDITOR ~/.zshrc"
-alias ohmyzsh="$EDITOR ~/.oh-my-zsh"
+alias vzsh="vim ~/.zshrc"
 alias rezsh="source ~/.zshrc"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
