@@ -54,6 +54,8 @@ fi
 export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*"'
 
 # System Shortcuts
+alias ..="cd .."
+alias ...="cd ../.."
 alias ls="ls --color"
 alias ll="ls -lha"
 alias ip="ip -c"
