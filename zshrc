@@ -14,6 +14,7 @@ bindkey "OB" down-line-or-search
 bindkey "OA" up-line-or-search
 
 # Git
+alias g="git"
 alias gt="git status"
 alias gu="git pull --rebase --autostash"
 alias gp="git push"
@@ -21,6 +22,7 @@ alias gc="git commit"
 alias gca="git commit --amend"
 alias ga="git add"
 alias gch="git checkout"
+alias gl="git log"
 
 # Docker
 alias d="docker"
