@@ -64,6 +64,10 @@ fi
 # FZF default grep command
 export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*"'
 
+# test env
+alias tenv="docker run -it --rm -v \"$CONFIG_FOLDER:/home/daniel/.myconfig\" -v \"$HOME/.zshrc:/home/daniel/.zshrc\" -v \"\$PWD:/home/daniel/testenv\" test-env"
+alias tenv-rebuild="docker build -t test-env --build-arg UID=\$(id -u) $CONFIG_FOLDER/test-env"
+
 # System Shortcuts
 alias ..="cd .."
 alias ...="cd ../.."
@@ -79,4 +83,3 @@ function mkcd(){
 alias vzsh="vim ~/.zshrc"
 alias rezsh="source ~/.zshrc"
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
