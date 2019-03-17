@@ -4,6 +4,11 @@ fpath=( "$CONFIG_FOLDER/fpath" $fpath )
 
 PURE_PROMPT_SYMBOL="🍕"
 
+HISTSIZE=1000
+HISTFILE=~/.zsh_history
+SAVEHIST=1000
+setopt HIST_IGNORE_SPACE
+
 autoload -U promptinit; promptinit
 prompt pure
 
