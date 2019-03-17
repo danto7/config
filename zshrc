@@ -12,6 +12,8 @@ setopt HIST_IGNORE_SPACE
 autoload -U promptinit; promptinit
 prompt pure
 
+source $CONFIG_FOLDER/fpath/widgets.zsh
+
 # Keybindings
 bindkey "[1;5D" backward-word
 bindkey "[1;5C" forward-word
