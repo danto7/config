@@ -18,7 +18,9 @@ source $CONFIG_FOLDER/fpath/widgets.zsh
 bindkey "[1;5D" backward-word
 bindkey "[1;5C" forward-word
 bindkey "OB" down-line-or-search
+bindkey "^[[B" down-line-or-search
 bindkey "OA" up-line-or-search
+bindkey "^[[A" up-line-or-search
 
 # Git
 alias g="git"
