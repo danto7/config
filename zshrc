@@ -70,6 +70,9 @@ alias ll="ls -lha"
 alias ip="ip -c"
 alias userctl="systemctl --user"
 alias sctl="sudo systemctl"
+function mkcd(){
+  mkdir "$@" && cd $1
+}
 
 alias vzsh="vim ~/.zshrc"
 alias rezsh="source ~/.zshrc"
