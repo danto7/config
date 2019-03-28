@@ -76,10 +76,10 @@ alias ll="ls -lha"
 alias ip="ip -c"
 alias userctl="systemctl --user"
 alias sctl="sudo systemctl"
+alias fixhistory="mv ~/.zsh_history ~/.zsh_history_bad && strings ~/.zsh_history_bad > ~/.zsh_history && fc -R ~/.zsh_history && rm ~/.zsh_history_bad"
 function mkcd(){
   mkdir "$@" && cd $1
 }
 
 alias vzsh="vim ~/.zshrc"
 alias rezsh="source ~/.zshrc"
-
