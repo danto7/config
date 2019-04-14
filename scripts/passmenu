@@ -1,0 +1,79 @@
+#!/usr/bin/env bash
+
+prefix=${PASSWORD_STORE_DIR-~/.password-store}
+
+function fail {
+  rofi -e "<span color='red'>$1</span>" -markup
+  exit 1
+}
+
+function extract_attr {
+  printf "%s" "$2" | grep "$1:" | sed "s/$1://g" | tr -d '[:space:]'
+}
+
+# -------------------------------------------------------------
+# Select password file
+
+sed_prefix=$(echo "$prefix/" | sed -e 's/\//\\\//g')
+passwordfiles=$(find "$prefix" -name '*.gpg' | sed -e "s/^$sed_prefix//g" -e "s/\.gpg\$//g")
+# exit ẃhen the user cancels the rofi dialog
+if ! pw_file=$(printf "%s\n" "${passwordfiles[@]}" | rofi -dmenu -p "Select one:"); then
+  exit 0
+fi
+
+# fail when the selected entry cant be found
+if ! entry=$(pass show "$pw_file"); then
+  fail "The selected entry is invalid."
+fi
+
+# ------------------------------------------------------------
+# Select action
+
+password=$(printf "%s" "$entry" | head -n1 | tr -d '[:space:]')
+url=$(extract_attr "url" "$entry")
+user=$(extract_attr "user" "$entry")
+
+fill_action="Autofill"
+user_action="Copy username"
+copy_action="Copy password"
+url_action="Open URL"
+actions=("$fill_action")
+
+# add the copy username option if there is a username
+if [ -n "$user" ]; then
+  actions+=("$user_action")
+fi
+
+actions+=("$copy_action")
+
+# add the url action if the url is valid
+if [[ $url =~ ^https?://.* ]]; then
+  actions+=("$url_action")
+fi
+
+# print all possible actions
+action=$(printf "%s\n" "${actions[@]}" | rofi -dmenu -p "$pw_file")
+case $action in
+$copy_action)
+  printf "%s" "$password" | xclip
+  exit 0
+  ;;
+$fill_action)
+  if [ -n "$user" ]; then
+    printf "%s" "$user" | xdotool type --clearmodifiers --file -
+    xdotool key Tab
+  fi
+  printf "%s" "$password" | xdotool type --clearmodifiers --file -
+  ;;
+$url_action)
+  [[ -x $BROWSER ]] && exec "$BROWSER" "$url"
+  path=$(command -v xdg-open || command -v gnome-open) && exec "$path" "$url"
+  fail "Can't open: $url"
+  ;;
+$user_action)
+  printf "%s" "$user" | xclip
+  exit 0
+  ;;
+*)
+  exit 0
+esac

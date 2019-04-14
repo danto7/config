@@ -203,6 +203,7 @@ bindsym XF86MonBrightnessDown exec --no-startup-id sudo brightnessctl set 5%- &&
 bindsym $mod+l exec --no-startup-id ~/.myconfig/scripts/screenlock
 bindsym Shift+$mod+F12 exec --no-startup-id rofi -show power -modi power:~/.myconfig/scripts/turnoff
 bindsym $mod+p exec --no-startup-id rofi -show "Monitor mode" -modi "Monitor mode":~/.myconfig/scripts/screen_setup
+bindsym $mod+k exec --no-startup-id PASSWORD_STORE_DIR=~/Dasswort/pass ~/.myconfig/scripts/passmenu
 
 # preconfigure some windows
 for_window [class="Nm-connection-editor"] floating enable
