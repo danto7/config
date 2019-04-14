@@ -14,6 +14,9 @@ prompt pure
 
 source $CONFIG_FOLDER/fpath/widgets.zsh
 
+# Password
+export PASSWORD_STORE_DIR=~/Dasswort/pass
+
 # Keybindings
 bindkey "[1;5D" backward-word
 bindkey "[1;5C" forward-word
