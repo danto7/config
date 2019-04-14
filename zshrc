@@ -84,5 +84,7 @@ function mkcd(){
   mkdir "$@" && cd $1
 }
 
+which direnv>/dev/null && eval "$(direnv hook zsh)"
+
 alias vzsh="vim ~/.zshrc"
 alias rezsh="source ~/.zshrc"
