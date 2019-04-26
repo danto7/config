@@ -1,0 +1,7 @@
+#!/bin/bash
+clip=$(xclip -o | grep -e 'https\?://')
+if [ -n "$clip" ]; then
+  printf "%s" "$clip" | xargs -r mpv || rofi -e "I'm sorry, youtube-dl can't handle this: $clip 🍵🎩"
+else
+  rofi -e "I'm sorry, I don't know what to do with this. 🍵🎩"
+fi
