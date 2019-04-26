@@ -55,7 +55,9 @@ fi
 action=$(printf "%s\n" "${actions[@]}" | rofi -dmenu -p "$pw_file")
 case $action in
 $copy_action)
-  printf "%s" "$password" | xclip
+  printf "%s" "$password" | xclip -r
+  sleep 30s
+  echo "" | xclip -r
   exit 0
   ;;
 $fill_action)
@@ -71,7 +73,7 @@ $url_action)
   fail "Can't open: $url"
   ;;
 $user_action)
-  printf "%s" "$user" | xclip
+  printf "%s" "$user" | xclip -r
   exit 0
   ;;
 *)

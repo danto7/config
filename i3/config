@@ -100,11 +100,11 @@ bindsym $mod+a focus parent
 #bindsym $mod+d focus child
 
 # move the currently focused window to the scratchpad
-bindsym $mod+Shift+minus move scratchpad
+bindsym $mod+Shift+degree move scratchpad
 
 # Show the next scratchpad window or hide the focused scratchpad window.
 # If there are multiple scratchpad windows, this command cycles through them.
-bindsym $mod+minus scratchpad show
+bindsym $mod+degree scratchpad show
 
 # Workspaces
 set $ws1 "1:⚙️"
@@ -124,8 +124,6 @@ bindsym $mod+Shift+2 move container to workspace $ws2
 bindsym $mod+Shift+3 move container to workspace $ws3
 bindsym $mod+Shift+4 move container to workspace $ws4
 
-# reload the configuration file
-bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
@@ -185,14 +183,17 @@ bindsym $mod+l exec --no-startup-id ~/.myconfig/scripts/screenlock
 bindsym Shift+$mod+F12 exec --no-startup-id rofi -show power -modi power:~/.myconfig/scripts/turnoff
 bindsym $mod+p exec --no-startup-id rofi -show "Monitor mode" -modi "Monitor mode":~/.myconfig/scripts/screen_setup
 bindsym $mod+k exec --no-startup-id PASSWORD_STORE_DIR=~/Dasswort/pass ~/.myconfig/scripts/passmenu
-bindsym $mod+m exec --no-startup-id rofi -dmenu -p "Video URL:" | xargs mpv
+bindsym $mod+m exec --no-startup-id ~/.myconfig/scripts/playvideo
 
 # preconfigure some windows
 for_window [class="Nm-connection-editor"] floating enable
 for_window [class="Blueman-services"] floating enable
 for_window [class="Blueman-manager"] floating enable
 for_window [class="Pavucontrol"] floating enable
-for_window [class="keepassxc"] move container to workspace $ws10
+for_window [class="mpv"] floating enable; resize shrink width 10000px; resize grow width 400px; resize shrink height 10000px; resize grow height 800px;
+for_window [class="code-oss"] move container to workspace $ws1
+
+focus_on_window_activation focus
 
 exec "setxkbmap -layout de"
 exec "compton -b"
@@ -200,10 +201,10 @@ exec "~/.myconfig/scripts/start_gnome_keyring"
 exec "thunar --daemon"
 exec_always "nitrogen --set-zoom-fill --random ~/wallpaper"
 exec "nm-applet"
-exec "keepassxc"
 
 bar {
   status_command i3blocks
+  #status_command 2>/tmp/i3blocks.err i3blocks -vvv | tee /tmp/i3blocks.out
   position top
   strip_workspace_numbers yes
 }
