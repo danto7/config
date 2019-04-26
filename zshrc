@@ -42,6 +42,9 @@ alias dps="docker ps"
 alias dpsa="docker ps -a"
 alias dc="docker-compose"
 
+# autojump
+which autojump>/dev/null && source /usr/share/autojump/autojump.zsh
+
 # Ruby
 [ -f ~/.rbenv/bin/rbenv ] && \
 	export PATH="$HOME/.rbenv/bin:$PATH" && \
@@ -88,3 +91,4 @@ which direnv>/dev/null && eval "$(direnv hook zsh)"
 
 alias vzsh="vim ~/.zshrc"
 alias rezsh="source ~/.zshrc"
+alias myconfig="code ~/.myconfig"
