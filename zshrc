@@ -61,11 +61,7 @@ export NVM_DIR="$HOME/.nvm"
 export GOPATH="$HOME/projects/go"
 
 # set editor
-if [ -n "$DESKTOP_SESSION" ] && hash code 2>/dev/null;then
-  export EDITOR="code -n -w"
-else
-  export EDITOR="vim"
-fi
+export EDITOR="vim"
 
 # FZF default grep command
 export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*"'
