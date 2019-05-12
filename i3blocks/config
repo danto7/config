@@ -3,9 +3,8 @@ command=$HOME/.config/i3blocks/blocks/$BLOCK_NAME $BLOCK_BUTTON
 separator_block_width=10
 markup=none
 
-[spotify]
-interval=once
-signal=10
+[disktest]
+interval=600
 
 [public_ip]
 interval=once
@@ -19,6 +18,7 @@ markup=pango
 [volume]
 interval=once
 signal=10
+command=bash $HOME/.config/i3blocks/blocks/$BLOCK_NAME $BLOCK_BUTTON
 
 [brightness]
 interval=once
@@ -29,5 +29,5 @@ interval=30
 
 # Date Time
 [time]
-command=echo "📅 $(date '+%d.%m.%Y %H:%M:%S')"
+command=echo "📅 W:$(date '+%V %d.%m.%Y %H:%M:%S')"
 interval=5

@@ -1,0 +1,9 @@
+#!/bin/bash
+
+shorts_dir="$HOME/.myconfig/shorts"
+shorts_files=$(find "$shorts_dir" -type f -executable)
+
+if menu=$(printf "%s" "$shorts_files" | sed -e 's/\.[a-zA-Z]*$//' -e 's|^'"$shorts_dir"'/\{0,1\}||g' | rofi -dmenu -p menu); then
+  shorts_file=$(printf "%s" "$shorts_files" | grep "$shorts_dir.*$menu")
+  $shorts_file
+fi
