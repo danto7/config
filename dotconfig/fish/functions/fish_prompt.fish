@@ -15,14 +15,24 @@ function fish_prompt
   set_color normal
   printf ' in '
 
-  set_color $fish_color_cwd
+  set_color cyan
   printf '%s' (pwd | sed "s|^$HOME|~|")
   set_color normal
 
+  # git status
+  printf '%s ' (__fish_git_prompt)
+
   # rbenv
   set_color red
-  if which rbenv > /dev/null
-    printf ' 💎 %s ' (rbenv version | rg -o '^[\d\.]+ ')
+  if which ruby > /dev/null
+    printf '💎 %s ' (ruby -v | cut -f 2 -d ' ')
+  end
+  set_color normal
+
+  # nodejs
+  set_color green
+  if which node > /dev/null
+    printf '%s ' (node -v)
   end
   set_color normal
 
@@ -36,10 +46,10 @@ function fish_prompt
 end
 
 function fish_right_prompt
-  set s $status
-  if test "$s" != 0
+  set last_status $status
+  if test "$last_status" != 0
     set_color red
-    printf "$s 🌧 "
+    printf "$last_status 🌧 "
     set_color normal
   end
 end
