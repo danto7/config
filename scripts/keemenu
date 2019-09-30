@@ -1,0 +1,71 @@
+#!/bin/bash
+
+function kp {
+  subc="$1"
+  shift
+  gpg -d -q < ~/.keepassxc | keepassxc-cli "$subc" ~/Dasswort/Database.kdbx -q "$@"
+}
+
+if ! selected="$(kp ls -R -f 2> /dev/null | grep -v '/$' | rofi -dmenu)"; then
+  echo "Nothing selected!" 1>&2
+  exit 1
+fi
+
+if ! entry="$(kp show "$selected")"; then
+  printf "Something went wrong:\n%s\n" "$entry"
+  exit 1
+fi
+
+p_entry=($(printf "%s" "$entry" | grep -E 'Title|UserName|Password|URL' | sed -r 's/^[a-zA-Z]+: //'))
+
+title="${p_entry[0]}"
+user="${p_entry[1]}"
+password="${p_entry[2]}"
+url="${p_entry[3]}"
+
+fill_action="Autofill"
+user_action="Copy username"
+copy_action="Copy password"
+url_action="Open URL"
+actions=("$fill_action")
+
+# add the copy username option if there is a username
+if [ -n "$user" ]; then
+  actions+=("$user_action")
+fi
+
+actions+=("$copy_action")
+
+# add the url action if the url is valid
+if [[ $url =~ ^https?://.* ]]; then
+  actions+=("$url_action")
+fi
+
+# print all possible actions
+action=$(printf "%s\n" "${actions[@]}" | rofi -dmenu -p "$title")
+case $action in
+$copy_action)
+  printf "%s" "$password" | xclip -r
+  sleep 30s
+  echo "" | xclip -r
+  exit 0
+  ;;
+$fill_action)
+  if [ -n "$user" ]; then
+    printf "%s" "$user" | xdotool type --clearmodifiers --file -
+    xdotool key Tab
+  fi
+  printf "%s" "$password" | xdotool type --clearmodifiers --file -
+  ;;
+$url_action)
+  [[ -x $BROWSER ]] && exec "$BROWSER" "$url"
+  path=$(command -v xdg-open || command -v gnome-open) && exec "$path" "$url"
+  fail "Can't open: $url"
+  ;;
+$user_action)
+  printf "%s" "$user" | xclip -r
+  exit 0
+  ;;
+*)
+  exit 0
+esac
