@@ -25,14 +25,14 @@ function fish_prompt
   # rbenv
   set_color red
   if ruby -v 2>&1 > /dev/null
-    printf '💎 %s ' (ruby -v | cut -f 2 -d ' ')
+    printf '\ue791 %s ' (ruby -v | cut -f 2 -d ' ')
   end
   set_color normal
 
   # nodejs
   set_color green
   if command -v node > /dev/null
-    printf '%s ' (node -v)
+    printf '\ue718 %s ' (node -v)
   end
   set_color normal
 
