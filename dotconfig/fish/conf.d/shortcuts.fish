@@ -4,7 +4,7 @@ abbr -a -g userctl systemctl --user
 abbr -a -g sctl sudo systemctl
 abbr -a -g ll ls -lah
 abbr -a -g vim nvim
-abbr -a -g v vim
+abbr -a -g v nvim
 
 # Git
 abbr -a -g g git
