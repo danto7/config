@@ -1,11 +1,17 @@
 set nu
 
+:filetype plugin on
+:syntax on
+
+set tabstop=2 softtabstop=0 expandtab shiftwidth=2 smarttab
+
 call plug#begin('~/.config/nvim/plugged')
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'tpope/vim-sensible'
 Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
 Plug 'elmcast/elm-vim'
 Plug 'itspriddle/vim-shellcheck'
+Plug 'dag/vim-fish'
 call plug#end()
 
 " Nerdtree
