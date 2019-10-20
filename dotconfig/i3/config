@@ -195,15 +195,16 @@ for_window [class="code-oss"] move container to workspace $ws1
 focus_on_window_activation focus
 
 exec "setxkbmap -layout de"
-exec "compton -b"
-exec "~/.myconfig/scripts/start_gnome_keyring"
-exec "thunar --daemon"
-exec_always "nitrogen --set-zoom-fill --random ~/wallpaper"
+#exec "compton -b"
+#exec "~/.myconfig/scripts/start_gnome_keyring"
+#exec "thunar --daemon"
+#exec_always "nitrogen --set-zoom-fill --random ~/wallpaper"
 exec "nm-applet"
 
-bar {
-  status_command i3blocks
-  #status_command 2>/tmp/i3blocks.err i3blocks -vvv | tee /tmp/i3blocks.out
-  position top
-  strip_workspace_numbers yes
-}
+exec_always --no-startup-id $HOME/.config/polybar/launch.sh
+#bar {
+#  status_command i3blocks
+#  #status_command 2>/tmp/i3blocks.err i3blocks -vvv | tee /tmp/i3blocks.out
+#  position top
+#  strip_workspace_numbers yes
+#}
