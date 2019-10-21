@@ -6,32 +6,32 @@
 
 /* global settings and color variables */
 * {
-   maincolor:        rgba(237, 135, 18, 100%);
-   highlight:        bold rgba(237, 135, 18, 100%);
-   urgentcolor:      rgba(229, 55, 20, 100%);
+   maincolor:        #ed8712;
+   highlight:        bold #ed8712;
+   urgentcolor:      #e53714;
 
-   fgwhite:          rgba(207, 207, 207, 100%);
-   blackdarkest:     rgba(29, 29, 29, 100%);
-   blackwidget:      rgba(38, 38, 38, 100%);
-   blackentry:       rgba(41, 41, 41, 100%);
-   blackselect:      rgba(48, 48, 48, 100%);
-   darkgray:         rgba(132, 132, 132, 100%);
-   scrollbarcolor:   rgba(80, 80, 80, 100%);
-   font: "monospace 12";
+   fgwhite:          #cfcfcf;
+   blackdarkest:     #1d1d1d;
+   blackwidget:      #262626;
+   blackentry:       #292929;
+   blackselect:      #303030;
+   darkgray:         #848484;
+   scrollbarcolor:   #505050;
+   font: "DejaVu Sans Mono Regular 14";
    background-color: @blackdarkest;
 }
 
 window {
    background-color: @blackdarkest;
-   anchor: center;
-   location: center;
-   y-offset: 0%;
+   anchor: north;
+   location: north;
+   y-offset: 20%;
 }
 
 mainbox {
    background-color: @blackdarkest;
    spacing:0px;
-   children: [inputbar, message, sidebar, listview];
+   children: [inputbar, message, mode-switcher, listview];
 }
 
 message {
@@ -110,7 +110,7 @@ scrollbar {
    handle-width: 15px;
 }
 
-sidebar {
+mode-switcher {
    background-color: @blackwidget;
 }
 
@@ -145,4 +145,3 @@ case-indicator {
    text-color:@maincolor;
    background-color:@blackwidget;
 }
-
