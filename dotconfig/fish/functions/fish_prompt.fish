@@ -25,14 +25,14 @@ function fish_prompt
   # rbenv
   set_color red
   if ruby -v 2>&1 > /dev/null
-    printf '\ue791 %s ' (ruby -v | cut -f 2 -d ' ')
+    printf ' %s ' (ruby -v | cut -f 2 -d ' ')
   end
   set_color normal
 
   # nodejs
   set_color green
   if command -v node > /dev/null
-    printf '\ue718 %s ' (node -v)
+    printf ' %s ' (node -v)
   end
   set_color normal
 
@@ -43,13 +43,4 @@ function fish_prompt
   end
   printf '> '
   set_color normal
-end
-
-function fish_right_prompt
-  set last_status $status
-  if test "$last_status" != 0
-    set_color red
-    printf "$last_status 🌧 "
-    set_color normal
-  end
 end
