@@ -5,6 +5,11 @@
  */
 
 /* global settings and color variables */
+
+configuration {
+  show-icons:   true;
+}
+
 * {
    maincolor:        #ed8712;
    highlight:        bold #ed8712;
