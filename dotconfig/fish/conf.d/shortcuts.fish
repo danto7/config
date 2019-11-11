@@ -17,11 +17,18 @@ abbr -a -g ga git add
 abbr -a -g gch git checkout
 abbr -a -g gl git log
 
-# Docker
+# podman
+abbr -a -g p podman
+abbr -a -g pps podman ps
+abbr -a -g ppsa podman ps -a
+abbr -a -g pc podman-compose
+
+# docker
 abbr -a -g d docker
 abbr -a -g dps docker ps
 abbr -a -g dpsa docker ps -a
 abbr -a -g dc docker-compose
+
 
 # Terraform
 abbr -a -g tf terraform
