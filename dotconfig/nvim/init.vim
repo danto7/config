@@ -27,3 +27,12 @@ map <C-Left>  <C-W>h<C-W>_
 map <C-Right> <C-W>l<C-W>_
 map <C-Up> <C-W>k<C-W>_
 map <C-Down> <C-W>j<C-W>_
+
+" relative line numbering
+:set number relativenumber
+
+:augroup numbertoggle
+:  autocmd!
+:  autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
+:  autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
+:augroup END
